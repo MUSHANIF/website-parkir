@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\datakendaraan;
 use App\Http\Requests\StoredatakendaraanRequest;
+use Redirect;
 use App\Http\Requests\UpdatedatakendaraanRequest;
-
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Auth;
 class DatakendaraanController extends Controller
 {
     /**
@@ -13,9 +16,43 @@ class DatakendaraanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function tambah(Request $request)
     {
-        //
+        $data = $request->all();
+        $model = new datakendaraan;
+        $model->userid = $request->userid;
+        $model->no_pol = $request->no_pol;
+        $model->jam_masuk = $request->jam_masuk;
+        $model->berapajam = $request->jam;
+        $model->id_kategori = $request->kategori;
+        $model->status = $request->status;
+        $validasi = Validator::make($data, [
+            
+            
+            'status' => 'required',               
+            
+            'jam_masuk' => 'required',
+
+        ]);
+        if ($validasi->fails()) {
+            return redirect()->route('/')->withInput()->withErrors($validasi);
+        }
+       
+        
+        $model->save(); 
+        toastr()->success('Berhasil di tambah ke pesanan anda!', 'Sukses');
+        return redirect()->route('datakendaraan.index')->with('success','berhasil di tambahkan di keranjang anda');
+    }
+      public function keluar(Request $request , $id){
+        $datas = datakendaraan::where('userid', $id )->where('id_kategori', $request->id_kategori)->update(['jam_keluar' => $request->jam_keluar ,'status_keluar' => $request->status_keluar]);
+        return Redirect::back()->with('success','berhasil memperbarui status anda');
+      }
+  
+    public function index(Request $request)
+    {
+        $cari = $request->cari;
+        $datas =  datakendaraan::with(['kategori'])->whereRelation('kategori','nm_kategori','like',"%".$cari."%")->where('userid', Auth::id())->get();
+        return view('user.parkir', compact('datas'));
     }
 
     /**

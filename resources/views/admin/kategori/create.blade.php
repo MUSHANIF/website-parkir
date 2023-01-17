@@ -31,7 +31,13 @@
             </div>
           </div>
          
-        
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-phone">Image</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="file" id="image" name="image" value="{{ old('image') }}" />
+                <img id="preview-image-before-upload" src="" alt="" style="width: 250px" class="mt-3" />
+            </div>
+          </div>
           <div class="row justify-content-end">
             <div class="col-sm-10">
               <button type="submit" class="btn btn-primary">Send</button>

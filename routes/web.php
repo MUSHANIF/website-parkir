@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\DatakendaraanController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +18,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('/');
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::middleware('user')->group(function () {
         Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
+        Route::post('/tambah/{id}', [App\Http\Controllers\DatakendaraanController::class, 'tambah'])->name('tambah');
+        Route::post('/keluar/{id}', [App\Http\Controllers\DatakendaraanController::class, 'keluar'])->name('keluar');
+        Route::resource('datakendaraan', DatakendaraanController::class);
     });
     Route::middleware('superadmin')->group(function () {
         
@@ -39,3 +42,4 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     });
 });
 require __DIR__.'/auth.php';
+

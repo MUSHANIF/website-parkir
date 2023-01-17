@@ -43,19 +43,26 @@
     />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="{{ asset('/assets/vendor/fonts/boxicons.css') }}" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="../assets/css/demo.css" />
+    <link rel="stylesheet" href="{{ asset("/assets/vendor/css/core.css") }}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{ asset('/assets/vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{{ asset('/assets/css/demo.css') }}" />
     <script src="https://cdn.statically.io/gh/devanka761/notipin/v1.24.49/all.js"></script>
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="{{ asset('/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
 
-    <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
-
+    <link rel="stylesheet" href="{{ asset('/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
+    <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <!-- Page CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- Helpers -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
 
     <!-- Helpers -->
     <script src="../assets/vendor/js/helpers.js"></script>
@@ -199,27 +206,18 @@
   </li>
 @elsecan('user')
   <!-- Dashboard -->
-  <li class="menu-item active">
-    <a href="index.html" class="menu-link">
+  <li class="menu-item {{ (request()->routeIs('dashboard')) ? 'active' : '' }}">
+    <a href="/dashboard" class="menu-link">
       <i class="menu-icon tf-icons bx bx-home-circle"></i>
       <div data-i18n="Analytics">Dashboard</div>
     </a>
   </li>
   <!-- Layouts -->
-  <li class="menu-item">
-    <a href="javascript:void(0);" class="menu-link menu-toggle">
-      <i class="menu-icon tf-icons bx bx-layout"></i>
-      <div data-i18n="Layouts">Tempat parkir anda</div>
+  <li class="menu-item {{ (request()->routeIs('datakendaraan.index')) ? 'active' : '' }}">
+    <a href="{{ route('datakendaraan.index') }}" class="menu-link">
+      <i class="menu-icon tf-icons bx bx-home-circle"></i>
+      <div data-i18n="Analytics">Tempat parkir anda</div>
     </a>
-
-    <ul class="menu-sub">
-      <li class="menu-item">
-        <a href="layouts-without-menu.html" class="menu-link">
-          <div data-i18n="Without menu">Without menu</div>
-        </a>
-      </li>
-   
-    </ul>
   </li>
   
 @endcan
@@ -403,11 +401,11 @@
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../assets/vendor/libs/popper/popper.js"></script>
+    <script src="{{ asset('/assets/vendor/libs/popper/popper.js') }}"></script>
     <script src="../assets/vendor/js/bootstrap.js"></script>
-    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src=".{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 
-    <script src="../assets/vendor/js/menu.js"></script>
+    <script src="{{ asset('/assets/vendor/js/menu.js') }}"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
@@ -425,11 +423,24 @@
       @endforeach
       
   </script>
+   <script type="text/javascript">
+    $(document).ready(function (e) {
+       $("#image").change(function () {
+          let reader = new FileReader();
+
+          reader.onload = (e) => {
+             $("#preview-image-before-upload").attr("src", e.target.result);
+          };
+
+          reader.readAsDataURL(this.files[0]);
+       });
+    });
+ </script>
     <!-- Main JS -->
-    <script src="../assets/js/main.js"></script>
+    <script src="{{ asset('/assets/js/main.js') }}"></script>
 
     <!-- Page JS -->
-    <script src="../assets/js/dashboards-analytics.js"></script>
+    <script src="{{ asset('/assets/js/dashboards-analytics.js') }}"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>

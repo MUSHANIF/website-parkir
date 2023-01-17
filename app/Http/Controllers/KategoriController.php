@@ -45,12 +45,19 @@ class KategoriController extends Controller
         $data = $request->all();
         $model = new kategori;
       
+        $model->image = $request->image;
         $model->nm_kategori = $request->nm_kategori;
         $model->harga_1jam = $request->harga_1jam;
         $validasi = Validator::make($data, [
             'nm_kategori' => 'required|max:191|unique:kategoris',
             'harga_1jam' => 'required|max:191',
         ]);
+         if ($image = $request->file('image')) {
+            $destinationPath = 'assets/images/kategori';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $model['image'] = "$profileImage";
+        }
         if ($validasi->fails()) {
             return redirect()->route('kategori.create')->withInput()->withErrors($validasi);
         }
@@ -105,7 +112,12 @@ class KategoriController extends Controller
         if ($validasi->fails()) {
             return redirect()->route('kategori.edit')->withInput()->withErrors($validasi);
         }
-       
+        if ($image = $request->file('image')) {
+            $destinationPath = 'assets/images/kategori';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $model['image'] = "$profileImage";
+        }
         $model->save();
 
         toastr()->success('Berhasil di buat!', 'Sukses');
