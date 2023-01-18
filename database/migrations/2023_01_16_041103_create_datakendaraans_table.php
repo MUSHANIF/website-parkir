@@ -19,7 +19,9 @@ return new class extends Migration
             $table->unsignedBigInteger('id_kategori');              
             $table->string('no_pol');  
             $table->timestamp('jam_masuk');   
-            $table->datetime('jam_keluar');   
+            $table->timestamp('berapajam')->nullable();   
+            $table->datetime('jam_keluar')->nullable();      
+            $table->integer('status_keluar')->nullable();      
             $table->enum('status', ['member', 'tidak member']);
             $table->timestamps();            
             $table->foreign('userid')->references('id')->on('users')->onDelete('cascade');
@@ -37,3 +39,4 @@ return new class extends Migration
         Schema::dropIfExists('datakendaraans');
     }
 };
+
