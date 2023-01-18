@@ -81,7 +81,7 @@
 					            <div class="services w-100 text-center">
 				              	<div class="icon d-flex align-items-center justify-content-center"><img src="/assets/img/icons/unicons/moto.gif" width="50px" height="50px" alt=""></div>
 				              	<div class="text w-100">
-					                <h3 class="heading mb-2">Pilih kendaraan yang anda sukai</h3>
+					                <h3 class="heading mb-2">Pilih Kategori lahan parkiran yang anda sukai</h3>
 					              </div>
 					            </div>      
 					          </div>
@@ -245,12 +245,12 @@
       </div>
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
 <div class="offcanvas-header">
-  <h5 class="offcanvas-title" id="offcanvasExampleLabel">Detail motor <span id="name2"></span></h5>
+  <h5 class="offcanvas-title" id="offcanvasExampleLabel">Detail Parkir <span id="name2"></span></h5>
   <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 </div>
 <div class="offcanvas-body">
   <div class="text-center mb-4">
-    <a href="" data-bs-toggle="modal" id="motorDetails"  data-bs-target="#exampleModal1"><img src="" id="img" style="height: 100px; width: 150px" /></a>
+    <a href="" data-bs-toggle="modal" id="ParkirDetails"  data-bs-target="#exampleModal1"><img src="" id="img" style="height: 100px; width: 150px" /></a>
   </div>
   <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -280,9 +280,9 @@
 	          	<span class="subheading">About us</span>
 	            <h2 class="mb-4">Welcome to Parkirmus </h2>
 
-	            <p>Kami selalu menyediakan motor - motor pilihan anda ,banyak jenis dan kategori motor yang mungkin anda cari, di mulai dari harga 300.000 per minggu sampai 2.000.000 perminggu </p>
-	            <p>Motor kami akan selalu ada jaminan nya,motor selalu di rawat seperti anak sendiri,di jamin kinclong setiap anda memasuki toko kami,perawatan yang setiap bulan kami lakukan ,seperti ganti oli dan selalu kami cek perawatan mesin ,dan juga kami mempunyai  mekanik handal yang setiap hari mengecek kendaraan sebelum di sewakan .</p>
-	            <p><a href="#" class="btn btn-primary py-3 px-4">Cari motor!</a></p>
+	            <p>Kami selalu menyediakan Parkir - Parkir pilihan anda ,banyak jenis dan kategori Parkir yang mungkin anda cari, di mulai dari harga 300.000 per minggu sampai 2.000.000 perminggu </p>
+	            <p>Parkir kami akan selalu ada jaminan nya,Parkir selalu di rawat seperti anak sendiri,di jamin kinclong setiap anda memasuki toko kami,perawatan yang setiap bulan kami lakukan ,seperti ganti oli dan selalu kami cek perawatan mesin ,dan juga kami mempunyai  mekanik handal yang setiap hari mengecek kendaraan sebelum di sewakan .</p>
+	            <p><a href="#" class="btn btn-primary py-3 px-4">Cari Parkir!</a></p>
 	          </div>
 					</div>
 				</div>
@@ -444,8 +444,8 @@
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2"><a href="#" class="logo">RE<span>MOT</span></a></h2>
-              <p>website rental motor yang selalu menyediakan motor bagus ,terawat dengan harga murah dan terjangkau</p>
+              <h2 class="ftco-heading-2"><a href="#" class="logo">PARKIR<span>MUS</span></a></h2>
+              <p>website rental Parkir yang selalu menyediakan Parkir bagus ,terawat dengan harga murah dan terjangkau</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>

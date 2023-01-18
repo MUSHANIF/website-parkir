@@ -51,7 +51,7 @@
           <tr>
             <td id="td"><img src="/assets/images/kategori/{{ $key->image }}" style="height: 100px; width: 150px" /></td>
             <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $key->nm_kategori }}</strong></td>
-            <td>{{ $key->harga_1jam }}</td>
+            <td>{{number_format($key->harga_1jam, 0, '', '.')}}</td>
          
   
             <td>

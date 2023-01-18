@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\laporanController;
 use App\Http\Controllers\DatakendaraanController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +32,11 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     });
     Route::middleware('admin')->group(function () {
         Route::get('/dashboardAdmin', [dashboardController::class, 'index'])->name('dashboardAdmin');
+        Route::get('/belum', [DatakendaraanController::class, 'belum'])->name('belum');
+        Route::get('/sudah', [DatakendaraanController::class, 'sudah'])->name('sudah');
         Route::resource('kategori', KategoriController::class);
+        Route::get('/excel', [laporanController::class, 'excel']);
+        Route::get('/pdf', [laporanController::class, 'pdf']);
     });
 
 

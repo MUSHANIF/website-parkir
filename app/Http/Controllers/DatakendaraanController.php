@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\datakendaraan;
+use App\Models\member;
 use App\Http\Requests\StoredatakendaraanRequest;
 use Redirect;
 use App\Http\Requests\UpdatedatakendaraanRequest;
@@ -40,8 +41,13 @@ class DatakendaraanController extends Controller
        
         
         $model->save(); 
-        toastr()->success('Berhasil di tambah ke pesanan anda!', 'Sukses');
-        return redirect()->route('datakendaraan.index')->with('success','berhasil di tambahkan di keranjang anda');
+        if ($request->status === 'member') {
+            $member = new member;
+            $member->no_pol = $request->no_pol;
+            $member->save(); 
+        }
+        
+        return redirect()->route('datakendaraan.index')->with('success','Berhasil di tambah ke pesanan anda!');
     }
       public function keluar(Request $request , $id){
         $datas = datakendaraan::where('userid', $id )->where('id_kategori', $request->id_kategori)->update(['jam_keluar' => $request->jam_keluar ,'status_keluar' => $request->status_keluar]);
@@ -54,7 +60,18 @@ class DatakendaraanController extends Controller
         $datas =  datakendaraan::with(['kategori'])->whereRelation('kategori','nm_kategori','like',"%".$cari."%")->where('userid', Auth::id())->get();
         return view('user.parkir', compact('datas'));
     }
-
+    public function belum(Request $request)
+    {
+        $cari = $request->cari;
+        $datas =  datakendaraan::with(['kategori'])->whereRelation('kategori','nm_kategori','like',"%".$cari."%")->where('status_keluar', NULL)->get();
+        return view('admin.belum', compact('datas'));
+    }
+    public function sudah(Request $request)
+    {
+        $cari = $request->cari;
+        $datas =  datakendaraan::with(['kategori'])->whereRelation('kategori','nm_kategori','like',"%".$cari."%")->where('status_keluar', 1)->get();
+        return view('admin.sudah', compact('datas'));
+    }
     /**
      * Show the form for creating a new resource.
      *

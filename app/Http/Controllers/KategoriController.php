@@ -98,7 +98,7 @@ class KategoriController extends Controller
      * @param  \App\Models\kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatekategoriRequest $request, kategori $kategori)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
         $model =  kategori::findOrFail($id);
@@ -106,11 +106,11 @@ class KategoriController extends Controller
         $model->nm_kategori = $request->nm_kategori;
         $model->harga_1jam = $request->harga_1jam;
         $validasi = Validator::make($data, [
-            'nm_kategori' => 'required|max:191|unique:kategoris',
+            'nm_kategori' => 'required|max:191',
             'harga_1jam' => 'required|max:191',
         ]);
         if ($validasi->fails()) {
-            return redirect()->route('kategori.edit')->withInput()->withErrors($validasi);
+            return redirect()->route('kategori.edit', $id)->withInput()->withErrors($validasi);
         }
         if ($image = $request->file('image')) {
             $destinationPath = 'assets/images/kategori';
@@ -119,8 +119,8 @@ class KategoriController extends Controller
             $model['image'] = "$profileImage";
         }
         $model->save();
-
-        toastr()->success('Berhasil di buat!', 'Sukses');
+        
+        toastr()->success('Berhasil di ubah!', 'Sukses');
         return redirect('/kategori');
     }
 

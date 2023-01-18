@@ -173,37 +173,32 @@
   </li>
 @elsecan('admin')
   <!-- Dashboard -->
-  <li class="menu-item active">
+  <li class="menu-item {{ (request()->routeIs('dashboardAdmin')) ? 'active' : '' }}">
     <a href="/dashboardAdmin" class="menu-link">
       <i class="menu-icon tf-icons bx bx-home-circle"></i>
       <div data-i18n="Analytics">Dashboard</div>
     </a>
   </li>
   <!-- Layouts -->
-  <li class="menu-item ">
+  <li class="menu-item {{ (request()->routeIs('kategori')) ? 'active' : '' }} ">
     <a href="/kategori" class="menu-link">
       <i class="menu-icon tf-icons bx bx-home-circle"></i>
       <div data-i18n="Analytics">Kategori</div>
     </a>
   </li>
-   <li class="menu-item ">
-    <a href="/kategori" class="menu-link">
+   <li class="menu-item {{ (request()->routeIs('belum')) ? 'active' : '' }} ">
+    <a href="/belum" class="menu-link">
       <i class="menu-icon tf-icons bx bx-home-circle"></i>
       <div data-i18n="Analytics">Kendaraan yang belum selesai</div>
     </a>
   </li>
-  <li class="menu-item ">
-    <a href="/kategori" class="menu-link">
+  <li class="menu-item  {{ (request()->routeIs('sudah')) ? 'active' : '' }}">
+    <a href="/sudah" class="menu-link">
       <i class="menu-icon tf-icons bx bx-home-circle"></i>
       <div data-i18n="Analytics">Kendaraan yang sudah selesai</div>
     </a>
   </li>
-  <li class="menu-item ">
-    <a href="/laporan" class="menu-link">
-      <i class="menu-icon tf-icons bx bx-home-circle"></i>
-      <div data-i18n="Analytics">Laporan</div>
-    </a>
-  </li>
+
 @elsecan('user')
   <!-- Dashboard -->
   <li class="menu-item {{ (request()->routeIs('dashboard')) ? 'active' : '' }}">
@@ -353,26 +348,9 @@
                     document.write(new Date().getFullYear());
                   </script>
                   , made with ❤️ by
-                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
+                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">Parkirmus</a>
                 </div>
-                <div>
-                  <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                  <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-                  <a
-                    href="https://themeselection.com/demo/Mumus-bootstrap-html-admin-template/documentation/"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Documentation</a
-                  >
-
-                  <a
-                    href="https://github.com/themeselection/Mumus-html-admin-template-free/issues"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Support</a
-                  >
-                </div>
+             
               </div>
             </footer>
             <!-- / Footer -->
