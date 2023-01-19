@@ -3,6 +3,9 @@
 @endphp
 @extends('layouts.home')
 @section('isi')
+@if ($datas->count())
+  
+
 <div class="card pb-5">
     <h5 class="card-header">Data kategori</h5>
     <div class="table-responsive text-nowrap">
@@ -110,6 +113,11 @@
       </table>
     </div>
   </div>
+  @else
+  <div class="card">
+    <h5 class="card-header text-center">Anda belum memesan </h5>
+  </div>
+  @endif
      
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
