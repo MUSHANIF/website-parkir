@@ -50,7 +50,7 @@ class DatakendaraanController extends Controller
         return redirect()->route('datakendaraan.index')->with('success','Berhasil di tambah ke pesanan anda!');
     }
       public function keluar(Request $request , $id){
-        $datas = datakendaraan::where('userid', $id )->where('id_kategori', $request->id_kategori)->update(['jam_keluar' => $request->jam_keluar ,'status_keluar' => $request->status_keluar]);
+        $datas = datakendaraan::where('userid', Auth::id() )->where('id_kategori', $request->id_kategori)->update(['jam_keluar' => $request->jam_keluar ,'status_keluar' => 1 ]);
         return Redirect::back()->with('success','berhasil memperbarui status anda');
       }
   

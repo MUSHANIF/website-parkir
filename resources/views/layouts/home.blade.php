@@ -180,7 +180,7 @@
     </a>
   </li>
   <!-- Layouts -->
-  <li class="menu-item {{ (request()->routeIs('kategori')) ? 'active' : '' }} ">
+  <li class="menu-item {{ (request()->routeIs('kategori.index')) ? 'active' : '' }} ">
     <a href="/kategori" class="menu-link">
       <i class="menu-icon tf-icons bx bx-home-circle"></i>
       <div data-i18n="Analytics">Kategori</div>

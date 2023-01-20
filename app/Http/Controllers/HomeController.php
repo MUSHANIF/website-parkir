@@ -16,8 +16,8 @@ class HomeController extends Controller
         $kategori =  kategori::count();
         
         
-         $json = Http::get('https://newsapi.org/v2/top-headlines?country=id&apiKey=c6f664254c6b4a2c8991e7ad94bf7d0b');
+         $json = Http::get('https://newsapi.org/v2/top-headlines?=id&apiKey=c6f664254c6b4a2c8991e7ad94bf7d0b');
       $api = json_decode($json, TRUE);
-        return view('welcome',compact('datas','api','user','kategori'));
+        return view('welcome',compact('datas','user','api','kategori'));
     }
 }
